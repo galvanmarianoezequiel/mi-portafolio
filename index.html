@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nono — Minecraft Builder & Server Configurator</title>
+    <style>
+        :root {
+            --bg-color: #0b0f0d;
+            --card-bg: #131c17;
+            --border-color: #1f3326;
+            --accent-color: #2ecc71;
+            --accent-glow: rgba(46, 204, 113, 0.15);
+            --text-main: #ffffff;
+            --text-muted: #a3b8ad;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+            border-top: 4px solid var(--accent-color);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        header img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.6rem;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .card-item {
+            background: #19261f;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .card-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card-item li {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-item li::before {
+            content: "▪";
+            color: var(--accent-color);
+            margin-right: 8px;
+        }
+
+        /* Galería de Builds (Imágenes) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-card {
+            background: #19261f;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .gallery-content {
+            padding: 15px;
+        }
+
+        .gallery-content h4 {
+            color: var(--text-main);
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background: #1c2b22;
+            color: var(--accent-color);
+            border: 1px solid var(--border-color);
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        .roles-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .badge {
+            background: #19261f;
+            color: var(--accent-color);
+            border: 1px solid var(--border-color);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <!-- Usa logo.jpg en assets/images/ -->
+            <img src="assets/images/logo.jpg" alt="Logo Nono">
+            <h1>Nono</h1>
+            <p>Minecraft Builder & Server Configurator • Construcción, Spawns & Mundos</p>
+        </header>
+
+        <!-- SOBRE MÍ -->
+        <section>
+            <h2>Sobre Mí</h2>
+            <p>Experto en construcción, diseño de mapas y configuración avanzada para servidores Minecraft. Me especializo en la creación de estructuras detalladas como spawns, lobbies, mapas KOTH, minas temáticas y zonas PvP utilizando herramientas profesionales de edición masiva como WorldEdit, FAWE y Litematica.</p>
+        </section>
+
+        <!-- GALERÍA DE BUILDS (SECCIÓN PRINCIPAL DE IMÁGENES) -->
+        <section>
+            <h2>Portafolio de Builds</h2>
+            <p>Trabajos de construcción realizados, incluyendo diseños exclusivos para Vynova y proyectos independientes.</p>
+            <div class="gallery-grid">
+                <div class="gallery-card">
+                    <img src="assets/images/vynova1.jpg" alt="Build Vynova 1">
+                    <div class="gallery-content">
+                        <h4>Vynova — Build Principal</h4>
+                        <p>Estructura de alta calidad desarrollada para el proyecto Vynova.</p>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <img src="assets/images/vynova.jpg" alt="Build Vynova 2">
+                    <div class="gallery-content">
+                        <h4>Vynova — Zona de Combate</h4>
+                        <p>Diseño arquitectónico y detalles visuales adaptados a la modalidad.</p>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <img src="assets/images/build1.jpg" alt="Build 1">
+                    <div class="gallery-content">
+                        <h4>Spawn / Lobby General</h4>
+                        <p>Espacio principal de bienvenida optimizado para servidores modernos.</p>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <img src="assets/images/build2.jpg" alt="Build 2">
+                    <div class="gallery-content">
+                        <h4>Zona KOTH</h4>
+                        <p>Mapa táctico y cerrado diseñado específicamente para eventos competitivos.</p>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <img src="assets/images/build3.jpg" alt="Build 3">
+                    <div class="gallery-content">
+                        <h4>Minas Temáticas</h4>
+                        <p>Estructura subterránea y decorados personalizados para BoxPvP.</p>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <img src="assets/images/build4.jpg" alt="Build 4">
+                    <div class="gallery-content">
+                        <h4>Zona PvP & Arenas</h4>
+                        <p>Terreno abierto optimizado para enfrentamientos fluidos entre jugadores.</p>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <img src="assets/images/build5.jpg" alt="Build 5">
+                    <div class="gallery-content">
+                        <h4>Detalles & Entorno</h4>
+                        <p>Paisajismo, montañas y decoración orgánica mediante esquemáticas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HABILIDADES DE CONSTRUCCIÓN -->
+        <section>
+            <h2>Herramientas & Técnicas de Construcción</h2>
+            <div class="grid-2">
+                <div class="card-item">
+                    <h3>Software y Comandos</h3>
+                    <ul>
+                        <li>WorldEdit (Selecciones, pinceles y ediciones)</li>
+                        <li>FastAsyncWorldEdit (FAWE para grandes terrenos)</li>
+                        <li>Litematica & Schematics (.litematic / .zip)</li>
+                        <li>Preparación de mundos vacíos para construir desde cero</li>
+                    </ul>
+                </div>
+                <div class="card-item">
+                    <h3>Tipos de Construcciones</h3>
+                    <ul>
+                        <li>Spawns y Lobbies principales</li>
+                        <li>Arenas de KOTH (Overworld / End)</li>
+                        <li>Minas para BoxPvP y FullPvP</li>
+                        <li>Zonas de eventos y decoración temática</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONFIGURACIÓN ADICIONAL -->
+        <section>
+            <h2>Configuración de Plugins & Sistemas</h2>
+            <div class="grid-3">
+                <div class="card-item">
+                    <h3>Core & Servidor</h3>
+                    <ul>
+                        <li>Paper / Spigot / Bukkit (Java 21)</li>
+                        <li>Pterodactyl Panel (Files y Consola)</li>
+                        <li>Multiverse-Core (Gestión de mundos)</li>
+                    </ul>
+                </div>
+                <div class="card-item">
+                    <h3>Protección & Economía</h3>
+                    <ul>
+                        <li>WorldGuard & ProtectionStones</li>
+                        <li>LuckPerms (Rangos y Permisos)</li>
+                        <li>EssentialsX & Vault</li>
+                    </ul>
+                </div>
+                <div class="card-item">
+                    <h3>Visuales & Eventos</h3>
+                    <ul>
+                        <li>FancyHolograms & FancyNpcs</li>
+                        <li>ExcellentCrates & PlayerKits2</li>
+                        <li>RDKoth / KOTH</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROLES -->
+        <section>
+            <h2>Roles Profesionales</h2>
+            <div class="roles-badges">
+                <div class="badge">Builder Principal</div>
+                <div class="badge">Terrain & Map Designer</div>
+                <div class="badge">Minecraft Server Developer</div>
+                <div class="badge">Plugin Configurator</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 — Diseñado y desarrollado por Nono.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
